@@ -12,7 +12,7 @@ First step is to create a role and add permissions allowed for the role.
 
 ```javascript
 
-    Meteor.roles.createRole('Editor', ['add-posts',' delete-posts']);
+    Roles.createRole('Editor', ['add-posts',' delete-posts']);
    
 ```
 
@@ -22,7 +22,7 @@ New role editor which can add and delete posts
 
 ```javascript
 
-    Meteor.roles.addRolePermissions('Editor', ['edit-posts']); // Add 'edit-posts' permission to Editors
+    Roles.addRolePermissions('Editor', ['edit-posts']); // Add 'edit-posts' permission to Editors
    
 ```
 
@@ -32,8 +32,8 @@ Editors can now edit posts as well
 
 ```javascript
 
-    Meteor.roles.createRole('Editor', []);
-    Meteor.roles.revokeRolePermissions('Editor', ['add-posts']); // Revokes 'add-posts' permission from Editors
+    Roles.createRole('Editor', []);
+    Roles.revokeRolePermissions('Editor', ['add-posts']); // Revokes 'add-posts' permission from Editors
    
 ```
 
@@ -45,27 +45,27 @@ delete existing roles for user and specify new set of roles for user
 
 ```javascript
 
-    Meteor.roles.setuserRoles(userId, ['Administrator']); // adds 'Administrator' role to user indicated by userId
+    Roles.setuserRoles(userId, ['Administrator']); // sets user indicated by userId to 'Administrator' role
    
 ```
 
-Now this user can perform all the functions that a administratoe is allowed to do but can no longer perform editor functions
+Now this user can perform all the functions that a administrator is allowed to do but can no longer perform editor functions
 
 ### Assign roles to user
 
 ```javascript
 
-    Meteor.roles.assignRolesToUser(userId, ['Editor']); // adds 'Editor' role to user indicated by userId
+    Roles.assignRolesToUser(userId, ['Editor']); // adds 'Editor' role to user indicated by userId
    
 ```
 
-Now this user can perform all the functions that a editor is allowed to do
+Now this user can perform all the functions that a editor is allowed to do in addition to administrator roles assigned to it earlier.
 
 ### Remove user from roles
 
 ```javascript
 
-    Meteor.roles.removeUserFromRoles(userId, ['Editor']);
+    Roles.removeUserFromRoles(userId, ['Editor']);
     
 ```
 
@@ -73,7 +73,7 @@ Now this user can perform all the functions that a editor is allowed to do
 
 ```javascript
     
-    Meteor.roles.getUserRoles(userId); // Returns an array of all roles that this user belongs to
+    Roles.getUserRoles(userId); // Returns an array of all roles that this user belongs to
     
 ```
 
@@ -81,7 +81,7 @@ Now this user can perform all the functions that a editor is allowed to do
 
 ```javascript
     
-    Meteor.roles.getUserPermissions(userId); // Returns an array of all permissions that this user is allowed
+    Roles.getUserPermissions(userId); // Returns an array of all permissions that this user is allowed
     
 ```
 
@@ -89,8 +89,8 @@ Now this user can perform all the functions that a editor is allowed to do
 
 ```javascript
     
-    Meteor.roles.userIdCan(userId, 'add-posts'); // Returns true or false depending on weather the user has this permission
-    Meteor.roles.userCan('add-posts'); // Returns true or false depending on weather the logged in user has this permission
+    Roles.userIdCan(userId, 'add-posts'); // Returns true or false depending on weather the user has this permission
+    Roles.userCan('add-posts'); // Returns true or false depending on weather the logged in user has this permission
     
 ```
 
