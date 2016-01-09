@@ -1,6 +1,6 @@
 Package.describe({
   name: 'shantanubhadoria:roles',
-  version: '0.0.2',
+  version: '0.0.4',
   // Brief, one-line summary of the package.
   summary: 'Meteor roles and permissions based access control',
   // URL to the Git repository containing the source code for this package.

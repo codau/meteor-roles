@@ -230,16 +230,12 @@
       check(userId, String);
       check(role, String);
 
-      var user = Meteor.users.findOne(
-        {
-          _id: userId,
-          roles: {
-            role: {$exists: true}
-          }
-        }
-      );
+      var query = {};
+      query['_id'] = userId
+      query['roles.' + role] = {$exists: true}; 
+      var user = Meteor.users.findOne(query);
 
-      return !(!user);
+      return !!user;
     },
     userIdCan: function(userId, permission) {
       check(userId, String);
