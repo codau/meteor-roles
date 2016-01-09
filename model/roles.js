@@ -226,6 +226,21 @@
 
       return user.permissions;
     },
+    userIdIsInRole: function(userId, role) {
+      check(userId, String);
+      check(role, String);
+
+      var user = Meteor.users.findOne(
+        {
+          _id: userId,
+          roles: {
+            role: {$exists: true}
+          }
+        }
+      );
+
+      return !(!user);
+    },
     userIdCan: function(userId, permission) {
       check(userId, String);
       check(permission, String);
