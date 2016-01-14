@@ -28,8 +28,7 @@ Meteor.publish('_userRoles', function () {
     },
     {
       fields: {
-        roles: 1,
-        permissions: 1
+        roles: 1
       }
     }
   );
